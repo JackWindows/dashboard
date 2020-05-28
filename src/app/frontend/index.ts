@@ -12,8 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {enableProdMode} from '@angular/core';
+import {enableProdMode, ApplicationRef} from '@angular/core';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {enableDebugTools} from '@angular/platform-browser';
 
 import {environment} from './environments/environment';
 import {RootModule} from './index.module';
@@ -22,4 +23,10 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(RootModule);
+platformBrowserDynamic()
+  .bootstrapModule(RootModule)
+  .then(moduleRef => {
+    const applicationRef = moduleRef.injector.get(ApplicationRef);
+    const appComponent = applicationRef.components[0];
+    enableDebugTools(appComponent);
+  });
