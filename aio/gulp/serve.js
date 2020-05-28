@@ -39,6 +39,7 @@ function getBackendArgs() {
     `--tls-key-file=${conf.backend.tlsKey}`,
     `--auto-generate-certificates=${conf.backend.autoGenerateCerts}`,
     `--enable-insecure-login=${conf.backend.enableInsecureLogin}`,
+    `--namespace=toronto-research`,
     `--enable-skip-login=${conf.backend.enableSkipButton}`
   ];
 
